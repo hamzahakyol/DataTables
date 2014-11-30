@@ -174,7 +174,10 @@ class SSP {
 		$where = '';
 
 		if ( count( $globalSearch ) ) {
-			$where = '('.implode(' OR ', $globalSearch).')';
+			$where = $where === '' ?
+			$where = '('.implode(' OR ', $globalSearch).')':
+			$where .' AND ('. implode(' OR ', $globalSearch).')';
+			
 		}
 
 		if ( count( $columnSearch ) ) {
